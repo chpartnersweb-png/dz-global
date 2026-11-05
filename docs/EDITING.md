@@ -17,6 +17,7 @@
 | `src/pages/index.astro` | ページ全体の並び、タイトル、description、OGテキスト、構造化データ |
 | `src/components/SiteHeader.astro` | 既存デザインを引き継いだヘッダー、ページ内リンク、メニュー |
 | `src/components/CorporateHero.astro` | メインコピー、輪郭の&、事業紹介への導線 |
+| `src/components/HeroStory.astro` | ヒーローとABOUTの共通描画レイヤー、静的な色面のフォールバック |
 | `src/components/AboutSection.astro` | 会社紹介文 |
 | `src/components/BusinessSection.astro` | 4つの支援内容の開閉リスト、国・地域や企業の状況に合わせた支援イメージ |
 | `src/components/ApproachSection.astro` | 相談場面の例、支援の進め方 |
@@ -33,10 +34,11 @@
 - `src/styles/home.scss`：現行ページの各セクションとレスポンシブ
 - Google Mapsリンクのピンは `CompanySection.astro` の `astro-icon` の `Icon` コンポーネント（`lucide:map-pin`）。`astro.config.mjs` で `astro-icon` を登録し、`@iconify-json/lucide` を使用する。サイズは16px、色はリンクの文字色を継承。リンクの間隔は `.small-link--map` で調整する。
 - `src/scripts/motion.ts`：GSAPの登場演出、PCのLenis、ヘッダーのスクロール状態
+- `src/scripts/hero-tiles.ts`：Three.jsの矩形面。散在→球面→右側への移動、面の数・サイズ・色の濃淡・回転・スクロール区間を編集する。基本色はCSS変数から取得する。画面サイズの変更や描画リソースの解放にも対応。詳細は `docs/design/hero-tile-sphere.md`。
 - `src/scripts/accordions.ts`：事業紹介と会社概要の開閉演出。開く際は約0.44秒、閉じる際は約0.32秒で高さと透明度を変化させる。連打時は現在位置から切り替え、動きを減らす設定では即時に切り替える。
 - `src/scripts/mobile-menu.ts`：1つのハンバーガーボタンで開閉を切り替える。Menu／Closeの表示と2本線／×が連動する。メニューを開く間は同じボタン要素をdialog内に移し、ヘッダーと同じ右上位置に固定する。閉じ終わると元の位置へ戻す。メニュー面だけをフェード・移動させ、操作ボタンは動かさない。リンク等は0.05秒ずつ登場し、退出は約0.3秒。Escape、同じボタン、リンク選択で退出し、終了後に背景スクロールを再開する。ページ内リンクは退出後に移動。動きを減らす設定、PC幅への変更、HMRの後片付けに対応する。
 
-現行ページは `CorporateHero.astro` を使用する。旧 `Hero.astro`、画像・粒子用のスクリプト、過去の生成画像を変更しても現行ページには反映されない。
+現行ページは `HeroStory.astro` から `CorporateHero.astro` と `AboutSection.astro` を表示し、`hero-tiles.ts` を起動する。旧 `Hero.astro`、旧画像・粒子用のスクリプト、過去の生成画像を変更しても現行ページには反映されない。
 
 モバイルメニューの社名はヘッダーの `[data-header-wordmark]` 自体を使用する。開く際に同じ要素をdialog内へ移し、左上に固定して表示し、閉じ終わるとヘッダーへ戻す。別の社名表示や複製は設けず、ロゴ・開閉ボタンはメニュー本体のフェード・移動対象に含めない。ロゴの文字組みは `SiteHeader.astro` と共通の `.wordmark` スタイルで編集する。
 

@@ -3,6 +3,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
 import 'lenis/dist/lenis.css';
 import { initAccordions } from './accordions';
+import { initHeroTiles } from './hero-tiles';
 
 export function initMotion(): () => void {
   gsap.registerPlugin(ScrollTrigger);
@@ -16,6 +17,7 @@ export function initMotion(): () => void {
   window.addEventListener('scroll', setHeader, { passive: true, signal: controller.signal });
 
   const cleanupAccordions = initAccordions(() => ScrollTrigger.refresh());
+  const cleanupHeroTiles = initHeroTiles();
 
   const media = gsap.matchMedia();
   media.add('(prefers-reduced-motion: no-preference)', () => {
@@ -49,6 +51,7 @@ export function initMotion(): () => void {
   return () => {
     controller.abort();
     cleanupAccordions();
+    cleanupHeroTiles();
     media.revert();
   };
 }

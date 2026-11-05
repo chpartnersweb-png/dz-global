@@ -17,6 +17,22 @@
 }
 .small-link--map { gap: 8px; }
 
+// One sticky scene connects the hero and the company introduction.
+.hero-story { position: relative; isolation: isolate; background: $paper; }
+.hero-story__visual { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.hero-story__viewport { position: sticky; top: 0; width: 100%; height: 100vh; height: 100dvh; overflow: clip; }
+.hero-story__canvas { display: block; width: 100%; height: 100%; }
+.hero-story__fallback { position: absolute; inset: 0; mask-image: linear-gradient(110deg, transparent 10%, $ink 85%);
+  > span { position: absolute; display: block; background: $ink; }
+}
+.hero-story__viewport.is-webgl-ready .hero-story__fallback { display: none; }
+.hero-story .home-hero { isolation: auto; }
+.hero-story .home-hero__topline, .hero-story .home-hero__main, .hero-story .home-hero__bottom,
+.hero-story .about-section > .section-shell { position: relative; z-index: 2; }
+.hero-story--enhanced .about-section__body { max-width: 58%; grid-template-columns: 1fr; gap: 34px; }
+.hero-story--enhanced .about-section__copy { padding-top: 0; }
+.hero-story--enhanced .about-section__copy > p { max-width: 590px; }
+
 // The ampersand in the company name becomes the visual link between its fields.
 .home-hero {
   position: relative; isolation: isolate; overflow: clip;
@@ -193,6 +209,7 @@
   .contact-section__phone > svg { margin-left: 0; width: 20px; }
 }
 @media (max-width: 767px) {
+  .hero-story--enhanced .about-section__body { max-width: none; gap: 32px; }
   .section-label { gap: 15px; font-size: 10px; }
   .section-label > span:first-child { font-size: 9px; letter-spacing: .08em; }
   .section-label > span:last-child { padding-left: 15px; }
