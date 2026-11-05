@@ -1,0 +1,16 @@
+---
+import { company } from '../data/company';
+---
+
+<footer class="site-footer">
+  <div class="section-shell">
+    <div class="site-footer__top">
+      <a class="site-footer__brand" href="#top" aria-label="D&Z Global トップへ">D<span>&</span>Z Global</a>
+      <a class="site-footer__back" href="#top"><span lang="en">BACK TO TOP</span><span aria-hidden="true">↑</span></a>
+    </div>
+    <div class="site-footer__bottom">
+      <div><p class="site-footer__company">{company.name}</p><p>〒{company.postalCode} {company.address.join(' ')}</p></div>
+      <small>© {new Intl.DateTimeFormat('en', { year: 'numeric', timeZone: 'Asia/Tokyo' }).format(new Date())} D&Z Global</small>
+    </div>
+  </div>
+</footer>

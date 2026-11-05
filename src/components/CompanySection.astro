@@ -1,0 +1,30 @@
+---
+import { company, activities } from '../data/company';
+import { Icon } from 'astro-icon/components';
+---
+
+<section class="company-section" id="company" aria-labelledby="company-title">
+  <div class="section-shell">
+    <div class="section-label" data-reveal><span>COMPANY</span><span>会社概要</span></div>
+    <div class="company-section__body">
+      <div class="company-section__intro" data-reveal>
+        <h2 id="company-title">会社概要</h2>
+      </div>
+      <div class="company-section__information" data-reveal>
+      <dl class="company-table">
+        <div><dt>会社名</dt><dd>{company.name}</dd></div>
+        <div><dt>所在地</dt><dd><address>〒{company.postalCode}<br />{company.address[0]}<br />{company.address[1]}</address><a class="small-link small-link--map" href={company.mapHref} target="_blank" rel="noopener noreferrer"><Icon name="lucide:map-pin" width={16} height={16} aria-hidden="true" focusable="false" /><span lang="en">Google Maps</span><span aria-hidden="true">↗</span><span class="visually-hidden">（新しいタブで開きます）</span></a></dd></div>
+        <div><dt>電話番号</dt><dd><a class="company-table__phone" href={company.phoneHref}>{company.phone}</a></dd></div>
+        <div><dt>企業支援</dt><dd>通訳・同時通訳、企業向け言語教育、文化理解、グローバル人材育成等<a class="small-link" href="#business"><span>支援内容の詳細</span><span aria-hidden="true">↑</span></a></dd></div>
+      </dl>
+      <details class="company-activities" data-business-area>
+        <summary><span>事業内容一覧（全10項目）</span><span class="company-activities__toggle" aria-hidden="true">＋</span></summary>
+        <div class="accordion-panel" data-accordion-panel>
+          <ol data-accordion-content>{activities.map((activity) => <li>{activity.text}</li>)}</ol>
+        </div>
+      </details>
+      <p class="company-section__scope">経営や人材に関するコンサルティングをはじめ、飲食、輸出入・販売、エンターテインメント・音楽、旅行などの事業領域を持っています。</p>
+      </div>
+    </div>
+  </div>
+</section>

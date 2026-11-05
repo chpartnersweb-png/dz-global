@@ -1,0 +1,42 @@
+---
+const navigation = [
+  { label: '私たちについて', english: 'About us', href: '#about' },
+  { label: '事業内容', english: 'Our services', href: '#business' },
+  { label: '会社概要', english: 'Company', href: '#company' },
+];
+---
+
+<header class="site-header" data-header>
+  <a class="wordmark" href="#top" aria-label="D&Z Global トップへ" data-header-wordmark>
+    <span class="wordmark__name">D<span class="wordmark__amp">&</span>Z <span class="wordmark__global">Global</span></span>
+  </a>
+  <nav class="desktop-nav" aria-label="メインナビゲーション">
+    {navigation.map(({ label, href }) => <a class="nav-link" href={href}>{label}</a>)}
+    <a class="contact-link" href="#contact"><span>お問い合わせ</span></a>
+  </nav>
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-navigation" aria-haspopup="dialog" aria-label="メニューを開く" data-menu-toggle>
+    <span class="menu-toggle__label" data-menu-label>Menu</span><span class="menu-toggle__lines" aria-hidden="true"><span></span><span></span></span>
+  </button>
+</header>
+
+<dialog class="mobile-menu" id="mobile-navigation" aria-label="メインメニュー" data-mobile-menu>
+  <div class="mobile-menu__surface" data-menu-surface>
+  <nav class="mobile-menu__nav" aria-label="モバイルナビゲーション">
+    {navigation.map(({ label, english, href }, index) => (
+      <a class="mobile-menu__link" href={href}>
+        <span class="mobile-menu__number" aria-hidden="true">0{index + 1}</span>
+        <span>{label}<span class="mobile-menu__english" lang="en">{english}</span></span>
+        <svg viewBox="0 0 24 24" width="23" height="23" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="1.25" /></svg>
+      </a>
+    ))}
+    <a class="contact-link mobile-menu__contact" href="#contact"><span>お問い合わせ</span></a>
+  </nav>
+  <p class="mobile-menu__note" lang="en">Connecting possibilities.<br />Beyond the boundaries.</p>
+  </div>
+</dialog>
+
+<script>
+  import { initMobileMenu } from '../scripts/mobile-menu';
+  const cleanup = initMobileMenu();
+  if (import.meta.hot) import.meta.hot.dispose(cleanup);
+</script>

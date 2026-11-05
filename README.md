@@ -1,43 +1,33 @@
-# Astro Starter Kit: Minimal
+# D&Z Global 株式会社
+
+Astro・SCSS・GSAP・Lenisによる1ページの企業サイト。「海外企業と日本企業の橋渡し」を軸に、ヘッダー、ヒーロー、私たちについて、支援内容、支援の進め方、会社概要、電話お問い合わせ、フッターで構成。
+
+## 開発
 
 ```sh
-npm create astro@latest -- --template minimal
+npm install
+npm run dev
+npm run astro -- dev status
+npm run astro -- dev logs
+npm run astro -- dev stop
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+`npm run dev` はAGENTS.mdの指定に従い、Astroをバックグラウンドで起動する。既定のローカルURLは `http://localhost:4321/`。
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+```sh
+npm run build
+npm run preview
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## 編集
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+- [会社情報・事業内容のデータ](src/data/company.ts)
+- [支援内容・相談例・進め方の提案コピー](src/data/support.ts)
+- [編集ガイド](docs/EDITING.md)
+- [実装概要と確認状況](docs/IMPLEMENTATION.md)
+- [掲載情報の出典](docs/CONTENT-SOURCES.md)
+- [現行デザインの意図](docs/design/corporate-onepage.md)
 
-Any static assets, like images, can be placed in the `public/` directory.
+基本色は `src/styles/_tokens.scss` の2色。現行ページのスタイルは `src/styles/home.scss`、ヘッダー等の共通スタイルは `src/styles/global.scss`。
 
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+過去の画像・Three.js試作は履歴として残しているが、現行ページからは読み込んでいない。ユーザー指定により、今回の再構成後のビルド・型チェック・ブラウザー確認は実施していない。公開・デプロイも行っていない。

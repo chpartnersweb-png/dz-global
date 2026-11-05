@@ -1,0 +1,27 @@
+---
+import { consultationExamples, supportSteps } from '../data/support';
+---
+
+<section class="approach-section" id="approach" aria-labelledby="approach-title">
+  <div class="section-shell">
+    <div class="section-label" data-reveal><span>OUR APPROACH</span><span>支援の進め方</span></div>
+    <div class="section-heading" data-reveal>
+      <h2 id="approach-title">まずは、<br /><span class="approach-section__title-phrase">向き合う相手を</span><br class="approach-section__mobile-break" /><span class="approach-section__title-phrase">知ることから。</span></h2>
+      <p>必要な支援は、企業ごとに異なります。<br />何をつなぎ、どのような関係を築きたいのか。<br />ご相談の背景から、一緒に整理していきます。</p>
+    </div>
+    <div class="consultation-needs" data-reveal>
+      <h3>このようなご相談から</h3>
+      <ul>{consultationExamples.map((example) => <li>{example}</li>)}</ul>
+    </div>
+    <ol class="support-flow">
+      {supportSteps.map((step) => (
+        <li data-reveal>
+          <span class="support-flow__number" aria-hidden="true">{step.number}</span>
+          <div class="support-flow__heading"><p>{step.label}</p><h3>{step.title}</h3></div>
+          <p class="support-flow__description">{step.description}</p>
+        </li>
+      ))}
+    </ol>
+    <a class="approach-section__link" href="#contact">お問い合わせ・ご相談</a>
+  </div>
+</section>

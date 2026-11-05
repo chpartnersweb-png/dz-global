@@ -1,0 +1,17 @@
+---
+import { company } from '../data/company';
+---
+
+<section class="contact-section" id="contact" aria-labelledby="contact-title">
+  <div class="section-shell">
+    <div class="section-label" data-reveal><span>CONTACT</span><span>お問い合わせ</span></div>
+    <div class="contact-section__body">
+      <h2 id="contact-title" data-reveal>つなぎたい相手を、<br />聞かせてください。</h2>
+      <div class="contact-section__information" data-reveal>
+        <p>展示会での通訳、社員の言語教育、人材育成など、<br class="desktop-break" />日本と海外をつなぐ取り組みについてご相談ください。</p>
+        <a class="contact-section__phone" href={company.phoneHref}><span class="contact-section__tel" lang="en">TEL</span><span>{company.phone}</span><svg viewBox="0 0 24 24" width="24" height="24" fill="none" aria-hidden="true"><path d="M5 19 19 5M5 5h14v14" stroke="currentColor" stroke-width="1.2" /></svg></a>
+        <span class="contact-section__phone-note">電話をかける</span>
+      </div>
+    </div>
+  </div>
+</section>

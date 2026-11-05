@@ -1,0 +1,48 @@
+---
+import { supportServices } from '../data/support';
+---
+
+<section class="business-section" id="business" aria-labelledby="business-title">
+  <div class="section-shell">
+    <div class="section-label" data-reveal><span>OUR BUSINESS</span><span>事業内容</span></div>
+    <div class="section-heading" data-reveal>
+      <h2 id="business-title">企業のあいだに、<br />必要な支援を。</h2>
+      <p>対話の場を支えること。<br />言葉と文化を学び、人を育てること。<br />目的に合わせて、橋渡しのかたちを考えます。</p>
+    </div>
+    <div class="business-list">
+      {supportServices.map((area, index) => (
+        <details class="business-area" open={index === 0} data-business-area>
+          <summary class="business-area__summary">
+            <span class="business-area__number" aria-hidden="true">{area.number}</span>
+            <span class="business-area__heading"><span class="business-area__english" lang="en">{area.english}</span><span class="business-area__title">{area.title}</span></span>
+            <span class="business-area__toggle" aria-hidden="true"></span>
+          </summary>
+          <div class="accordion-panel" data-accordion-panel>
+          <div class="business-area__content" data-accordion-content>
+            <p class="business-area__intro">{area.introduction}</p>
+            <p class="business-area__description">{area.description}</p>
+            <ul class="business-area__activities">
+              {area.points.map((point) => (
+                <li><span class="business-area__activity-number" aria-hidden="true">—</span><span>{point}</span></li>
+              ))}
+            </ul>
+          </div>
+          </div>
+        </details>
+      ))}
+    </div>
+    <article class="support-example" aria-labelledby="support-example-title">
+      <div class="support-example__heading" data-reveal>
+        <p class="support-example__label">支援のイメージ</p>
+        <h3 id="support-example-title">国や文化を越えて、<br />企業のつながりを支える。</h3>
+        <p class="support-example__words" aria-hidden="true" lang="en">LANGUAGE<br /><span>& CULTURE</span></p>
+      </div>
+      <div class="support-example__copy" data-reveal>
+        <p class="support-example__lead">言語と文化への理解を、<br />よりよい協働につなげる。</p>
+        <p>海外企業との協働では、言語に加え、商習慣や仕事の進め方など、相手の背景を理解することが大切です。</p>
+        <p>D&Z Globalは、関わる国・地域や企業の状況に合わせて、通訳、言語教育、異文化理解を組み合わせた支援を考えます。展示会での対話から、取引先と関わる社員の学びまで、目的に応じたコミュニケーションを支えます。</p>
+        <p>互いの意図を伝え合い、ともに仕事を進められる関係へ。対話と学びの両面から、日本と海外の企業のつながりを支えます。</p>
+      </div>
+    </article>
+  </div>
+</section>
