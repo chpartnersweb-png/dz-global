@@ -1,6 +1,6 @@
 # D&Z Global 株式会社
 
-Astro・SCSS・GSAP・Lenis・Three.jsによる1ページの企業サイト。「海外企業と日本企業の橋渡し」を軸に、ヘッダー、ヒーロー、私たちについて、支援内容、支援の進め方、会社概要、電話お問い合わせ、フッターで構成。
+Astro・SCSS・GSAP・Lenis・Three.jsによる1ページの企業サイト。「海外企業と日本企業の橋渡し」を軸に、ヘッダー、ヒーロー、私たちについて、私たちの強み、支援内容、支援の進め方、会社概要、電話お問い合わせ、フッターで構成。
 
 ## 開発
 
@@ -23,6 +23,7 @@ npm run preview
 
 - [会社情報・事業内容のデータ](src/data/company.ts)
 - [支援内容・相談例・進め方の提案コピー](src/data/support.ts)
+- [クライアント提供の「私たちの強み」](src/data/strengths.ts)
 - [編集ガイド](docs/EDITING.md)
 - [実装概要と確認状況](docs/IMPLEMENTATION.md)
 - [掲載情報の出典](docs/CONTENT-SOURCES.md)

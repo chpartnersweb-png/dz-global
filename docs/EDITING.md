@@ -6,6 +6,8 @@
 
 `src/data/support.ts` が通訳・言語教育・文化理解・人材育成の4つの支援内容、相談場面の例、支援の進め方の編集元。支援の説明や進め方は、クライアントの説明をもとに作成した提案文を含む。出典と補足の範囲は `docs/CONTENT-SOURCES.md` を参照。
 
+`src/data/strengths.ts` が、2026-11-06にクライアント提供文として受領した「私たちの強み」の編集元。導入文は `strengthsIntroduction`、各強みは `strengths` の `title`・`titleParts`・`expertise`・`paragraphs` で管理する。`titleParts` は改行制御用なので、連結した文字が `title` と一致するようにする。本文は推測で作った既存の提案文とは区別する。
+
 会社情報を変更すると、会社概要・お問い合わせ・フッターに反映される。住所の変更時は地図検索用の住所、`src/pages/index.astro` の構造化データの住所も変更する。電話番号の変更時は表示用番号、`tel:` 用番号、構造化データの国際表記を揃える。
 
 社名のロゴ文字は `src/components/SiteHeader.astro`、`src/components/SiteFooter.astro`、`src/components/CorporateHero.astro`、`public/favicon.svg` にも記述がある。本文・ページメタ情報の社名も合わせて変更する。ヘッダーには株式会社を表示しない。
@@ -19,6 +21,7 @@
 | `src/components/CorporateHero.astro` | メインコピー、輪郭の&、事業紹介への導線 |
 | `src/components/HeroStory.astro` | ヒーローとABOUTの共通描画レイヤー、静的な色面のフォールバック |
 | `src/components/AboutSection.astro` | 会社紹介文 |
+| `src/components/StrengthsSection.astro` | クライアント提供の「私たちの強み」導入・3項目の全文 |
 | `src/components/BusinessSection.astro` | 4つの支援内容の開閉リスト、国・地域や企業の状況に合わせた支援イメージ |
 | `src/components/ApproachSection.astro` | 相談場面の例、支援の進め方 |
 | `src/components/CompanySection.astro` | 会社概要・地図リンク・事業10項目の開閉リスト |

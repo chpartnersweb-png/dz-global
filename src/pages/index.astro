@@ -1,6 +1,7 @@
 ---
 import SiteHeader from '../components/SiteHeader.astro';
 import HeroStory from '../components/HeroStory.astro';
+import StrengthsSection from '../components/StrengthsSection.astro';
 import BusinessSection from '../components/BusinessSection.astro';
 import ApproachSection from '../components/ApproachSection.astro';
 import CompanySection from '../components/CompanySection.astro';
@@ -12,7 +13,7 @@ import '../styles/global.scss';
 import '../styles/home.scss';
 
 const title = `${company.name} | 日本と海外の企業をつなぐ橋渡し`;
-const description = '海外企業と日本企業の橋渡しをするD&Z Global 株式会社。商業展示会などでの通訳・同時通訳、企業向け言語教育、文化理解、グローバル人材育成を通じて、人と企業のつながりを支えます。';
+const description = '海外企業と日本企業の橋渡しをするD&Z Global 株式会社。多国籍な人材と各分野の専門家の経験を生かし、組織・人事、店舗・施設の運営支援、国際貿易、旅行事業などを展開しています。';
 const organization = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
@@ -47,6 +48,7 @@ const organization = {
     <SiteHeader />
     <main id="main" tabindex="-1">
       <HeroStory />
+      <StrengthsSection />
       <BusinessSection />
       <ApproachSection />
       <CompanySection />

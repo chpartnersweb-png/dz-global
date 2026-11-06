@@ -1,0 +1,28 @@
+---
+import { strengthsIntroduction, strengths } from '../data/strengths';
+---
+
+<section class="strengths-section" id="strengths" aria-labelledby="strengths-title">
+  <div class="section-shell">
+    <div class="section-label" data-reveal><span>OUR STRENGTHS</span><span>私たちの強み</span></div>
+    <div class="strengths-section__intro">
+      <h2 id="strengths-title" data-reveal>私たちの強み</h2>
+      <div class="strengths-section__introduction" data-reveal>
+        {strengthsIntroduction.map((paragraph) => <p>{paragraph}</p>)}
+      </div>
+    </div>
+    <div class="strengths-list">
+      {strengths.map((strength) => (
+        <article class="strength" aria-labelledby={`strength-${strength.id}-title`}>
+          <div class="strength__heading" data-reveal>
+            <h3 id={`strength-${strength.id}-title`} aria-label={strength.title}>{strength.titleParts.map((part) => <span>{part}</span>)}</h3>
+            <p class="strength__expertise">{strength.expertise}</p>
+          </div>
+          <div class="strength__copy" data-reveal>
+            {strength.paragraphs.map((paragraph) => <p>{paragraph}</p>)}
+          </div>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
