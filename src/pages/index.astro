@@ -32,6 +32,28 @@ const organization = {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script is:inline>
+      (() => {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        if (window.location.hash && !['#', '#top'].includes(window.location.hash)) return;
+        const root = document.documentElement;
+        root.classList.add('page-entering');
+        // If the animation bundle fails, release the content automatically.
+        window.setTimeout(() => root.classList.remove('page-entering'), 3200);
+        window.addEventListener('pageshow', (event) => {
+          if (event.persisted) root.classList.remove('page-entering');
+        });
+      })();
+    </script>
+    <style is:inline>
+      @media (prefers-reduced-motion: no-preference) {
+        html.page-entering [data-header],
+        html.page-entering [data-hero-visual],
+        html.page-entering [data-hero-line],
+        html.page-entering [data-hero-detail],
+        html.page-entering [data-hero-tiles] { visibility: hidden; }
+      }
+    </style>
     <meta name="theme-color" content="#FFFFFF" />
     <meta name="description" content={description} />
     <meta property="og:title" content={title} />

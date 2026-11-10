@@ -4,6 +4,7 @@ import Lenis from 'lenis';
 import 'lenis/dist/lenis.css';
 import { initAccordions } from './accordions';
 import { initHeroTiles } from './hero-tiles';
+import { initPageEntry } from './page-entry';
 
 export function initMotion(): () => void {
   gsap.registerPlugin(ScrollTrigger);
@@ -17,16 +18,11 @@ export function initMotion(): () => void {
   window.addEventListener('scroll', setHeader, { passive: true, signal: controller.signal });
 
   const cleanupAccordions = initAccordions(() => ScrollTrigger.refresh());
+  const cleanupPageEntry = initPageEntry();
   const cleanupHeroTiles = initHeroTiles();
 
   const media = gsap.matchMedia();
   media.add('(prefers-reduced-motion: no-preference)', () => {
-    // Content remains visible in the HTML if JavaScript is unavailable.
-    const intro = gsap.timeline({ defaults: { ease: 'power2.out' } });
-    intro.from(visual, { opacity: 0, duration: .9 }, 0)
-      .from('[data-hero-mark]', { opacity: 0, duration: 1.3 }, 0)
-      .from('[data-hero-line]', { y: 16, opacity: 0, duration: .8, stagger: .12 }, .12)
-      .from('[data-hero-detail]', { y: 9, opacity: 0, duration: .65, stagger: .035 }, .35);
     gsap.utils.toArray<HTMLElement>('[data-reveal]').forEach((element) => {
       gsap.from(element, {
         y: 22, opacity: 0, duration: .75, ease: 'power2.out',
@@ -51,6 +47,7 @@ export function initMotion(): () => void {
   return () => {
     controller.abort();
     cleanupAccordions();
+    cleanupPageEntry();
     cleanupHeroTiles();
     media.revert();
   };
