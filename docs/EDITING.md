@@ -4,7 +4,7 @@
 
 `src/data/company.ts` が会社名、住所、電話番号、電話発信先、地図リンク、事業10項目の編集元。
 
-`src/data/support.ts` が通訳・言語教育・文化理解・人材育成の4つの支援内容、相談場面の例、支援の進め方の編集元。支援の説明や進め方は、クライアントの説明をもとに作成した提案文を含む。出典と補足の範囲は `docs/CONTENT-SOURCES.md` を参照。
+`src/data/support.ts` が通訳・言語教育・文化理解・人材の採用と育成の4つの支援内容、相談場面の例、支援の進め方の編集元。支援の説明や進め方は、クライアントの説明をもとに作成した提案文を含む。出典と補足の範囲は `docs/CONTENT-SOURCES.md` を参照。
 
 `src/data/strengths.ts` が、2026-11-06にクライアント提供文として受領した「私たちの強み」の編集元。導入文は `strengthsIntroduction`、各強みは `strengths` の `title`・`titleParts`・`expertise`・`paragraphs` で管理する。`titleParts` は改行制御用なので、連結した文字が `title` と一致するようにする。本文は推測で作った既存の提案文とは区別する。
 
