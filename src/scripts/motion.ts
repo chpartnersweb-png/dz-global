@@ -31,7 +31,7 @@ export function initMotion(): () => void {
     });
   });
   media.add('(min-width: 1024px) and (prefers-reduced-motion: no-preference) and (pointer: fine)', () => {
-    const lenis = new Lenis({ lerp: .1, smoothWheel: true, anchors: { offset: -96 } });
+    const lenis = new Lenis({ lerp: .1, smoothWheel: true, anchors: { offset: -(header.getBoundingClientRect().height + 20) } });
     const update = (time: number) => lenis.raf(time * 1000);
     lenis.on('scroll', ScrollTrigger.update);
     gsap.ticker.add(update);

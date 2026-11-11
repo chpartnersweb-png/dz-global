@@ -1,11 +1,13 @@
 ---
+import { Image } from 'astro:assets';
+import logo from '../assets/logo.png';
 import { company } from '../data/company';
 ---
 
 <footer class="site-footer">
   <div class="section-shell">
     <div class="site-footer__top">
-      <a class="site-footer__brand" href="#top" aria-label="D&Z Global トップへ">D<span>&</span>Z Global</a>
+      <a class="site-footer__brand" href="#top" aria-label="D&Z Global トップへ"><Image src={logo} alt="D&Z Global" class="site-footer__logo" width={192} height={192} loading="lazy" decoding="async" /></a>
       <a class="site-footer__back" href="#top"><span lang="en">BACK TO TOP</span><span aria-hidden="true">↑</span></a>
     </div>
     <div class="site-footer__bottom">

@@ -1,4 +1,6 @@
 ---
+import { Image } from 'astro:assets';
+import logo from '../assets/logo.png';
 const navigation = [
   { label: '私たちについて', english: 'About us', href: '#about' },
   { label: '私たちの強み', english: 'Our strengths', href: '#strengths' },
@@ -9,7 +11,7 @@ const navigation = [
 
 <header class="site-header" data-header>
   <a class="wordmark" href="#top" aria-label="D&Z Global トップへ" data-header-wordmark>
-    <span class="wordmark__name">D<span class="wordmark__amp">&</span>Z <span class="wordmark__global">Global</span></span>
+    <Image src={logo} alt="D&Z Global" class="wordmark__image" width={192} height={192} loading="eager" decoding="async" fetchpriority="high" />
   </a>
   <nav class="desktop-nav" aria-label="メインナビゲーション">
     {navigation.map(({ label, href }) => <a class="nav-link" href={href}>{label}</a>)}
