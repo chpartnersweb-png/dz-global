@@ -17,13 +17,11 @@ import { Icon } from 'astro-icon/components';
         <div><dt>電話番号</dt><dd><a class="company-table__phone" href={company.phoneHref}>{company.phone}</a></dd></div>
         <div><dt>企業支援</dt><dd>通訳・同時通訳、企業向け言語教育、文化理解、グローバル人材の採用支援・育成等<a class="small-link" href="#business"><span>支援内容の詳細</span><span aria-hidden="true">↑</span></a></dd></div>
       </dl>
-      <details class="company-activities" data-business-area>
-        <summary><span>事業内容一覧（全10項目）</span><span class="company-activities__toggle" aria-hidden="true">＋</span></summary>
-        <div class="accordion-panel" data-accordion-panel>
-          <ol data-accordion-content>{activities.map((activity) => <li>{activity.text}</li>)}</ol>
-        </div>
-      </details>
-      <p class="company-section__scope">経営や人材に関するコンサルティングをはじめ、飲食、輸出入・販売、エンターテインメント・音楽、旅行などの事業領域を持っています。</p>
+      <section class="company-activities" aria-labelledby="company-activities-title">
+        <h3 id="company-activities-title">事業内容一覧（全{activities.length}項目）</h3>
+        <ol>{activities.map((activity) => <li>{activity.text}</li>)}</ol>
+      </section>
+      <p class="company-section__scope">経営・採用・社員教育・人材育成や店舗・施設の運営に関するコンサルティングをはじめ、飲食店の経営、芸能タレントのマネジメント・プロモート活動を行っています。</p>
       </div>
     </div>
   </div>

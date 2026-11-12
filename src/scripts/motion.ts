@@ -8,6 +8,8 @@ import { initPageEntry } from './page-entry';
 
 export function initMotion(): () => void {
   gsap.registerPlugin(ScrollTrigger);
+  // Browser toolbar changes on touch devices must not reset scroll animation bounds.
+  ScrollTrigger.config({ ignoreMobileResize: true });
   const header = document.querySelector<HTMLElement>('[data-header]');
   const visual = document.querySelector<HTMLElement>('[data-hero-visual]');
   const hero = document.querySelector<HTMLElement>('[data-hero]');

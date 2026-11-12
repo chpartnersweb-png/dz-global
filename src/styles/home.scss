@@ -17,10 +17,12 @@
 }
 .small-link--map { gap: 8px; }
 
+// Keep layout dimensions stable while mobile browser toolbars appear/disappear.
+// The background uses the large viewport so it still covers the exposed screen.
 // One sticky scene connects the hero and the company introduction.
 .hero-story { position: relative; isolation: isolate; background: $paper; }
 .hero-story__visual { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
-.hero-story__viewport { position: sticky; top: 0; width: 100%; height: 100vh; height: 100dvh; overflow: clip; }
+.hero-story__viewport { position: sticky; top: 0; width: 100%; height: 100vh; height: 100lvh; overflow: clip; }
 .hero-story__canvas { display: block; width: 100%; height: 100%; opacity: 0; transition: opacity .8s ease; }
 .hero-story__fallback { position: absolute; inset: 0; opacity: 1; transition: opacity .6s ease; mask-image: linear-gradient(110deg, transparent 10%, $ink 85%);
   > span { position: absolute; display: block; background: $ink; }
@@ -37,10 +39,10 @@
 // The ampersand in the company name becomes the visual link between its fields.
 .home-hero {
   position: relative; isolation: isolate; overflow: clip;
-  min-height: 100vh; min-height: 100dvh;
+  min-height: 100vh; min-height: 100svh;
   display: grid; grid-template-rows: auto 1fr auto;
-  gap: clamp(12px, 2.4dvh, 24px);
-  padding: calc(var(--header-height) + clamp(12px, 3dvh, 32px)) var(--gutter) max(clamp(14px, 2.6dvh, 28px), env(safe-area-inset-bottom));
+  gap: clamp(12px, 2.4svh, 24px);
+  padding: calc(var(--header-height) + clamp(12px, 3svh, 32px)) var(--gutter) max(clamp(14px, 2.6svh, 28px), env(safe-area-inset-bottom));
 }
 .home-hero__art { position: absolute; z-index: -1; inset: 0; overflow: hidden; pointer-events: none; background: $paper; }
 .home-hero__symbol { position: absolute; display: block; right: -.055em; top: 50%; transform: translateY(-50%) rotate(-12deg); font-family: Georgia, 'Times New Roman', serif; font-size: clamp(650px, 80vw, 1220px); font-weight: 400; line-height: 1; color: transparent; -webkit-text-stroke: 1px rgba($ink, .16); }
@@ -49,18 +51,18 @@
   > span { font-size: 9px; }
 }
 .home-hero__main { min-width: 0; display: flex; flex-direction: column; align-items: flex-start; justify-content: center; }
-.home-hero__eyebrow { margin-bottom: clamp(12px, 2.8dvh, 25px); font-family: Arial, Helvetica, sans-serif; font-size: 10px; letter-spacing: .2em; }
-.home-hero__title { margin: 0 0 0 -.05em; font-size: clamp(40px, min(7.7vw, 11dvh), 116px); font-weight: 500; line-height: 1.28; letter-spacing: -.075em;
+.home-hero__eyebrow { margin-bottom: clamp(12px, 2.8svh, 25px); font-family: Arial, Helvetica, sans-serif; font-size: 10px; letter-spacing: .2em; }
+.home-hero__title { margin: 0 0 0 -.05em; font-size: clamp(40px, min(7.7vw, 11svh), 116px); font-weight: 500; line-height: 1.28; letter-spacing: -.075em;
   > span { display: block; }
 }
 .home-hero__title-line { overflow: clip; padding-block: .025em; margin-block: -.025em;
   > span { display: block; }
 }
-.home-hero__message { margin-top: clamp(14px, 3.2dvh, 29px); min-width: 0;
-  > p { font-size: clamp(12px, 1.8dvh, 14px); line-height: 1.95; letter-spacing: .025em; }
-  .text-link { margin-top: clamp(14px, 3dvh, 27px); }
+.home-hero__message { margin-top: clamp(14px, 3.2svh, 29px); min-width: 0;
+  > p { font-size: clamp(12px, 1.8svh, 14px); line-height: 1.95; letter-spacing: .025em; }
+  .text-link { margin-top: clamp(14px, 3svh, 27px); }
 }
-.home-hero__bottom { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding-top: clamp(10px, 2.2dvh, 20px); border-top: 1px solid rgba($ink, .2); font-family: Arial, Helvetica, sans-serif; font-size: 9px; letter-spacing: .075em; }
+.home-hero__bottom { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding-top: clamp(10px, 2.2svh, 20px); border-top: 1px solid rgba($ink, .2); font-family: Arial, Helvetica, sans-serif; font-size: 9px; letter-spacing: .075em; }
 .home-hero__scroll { display: flex; align-items: center; gap: 20px; min-height: 36px; font-size: 8px; letter-spacing: .1em;
   > span:last-child { font-size: 22px; line-height: 1; }
 }
@@ -184,13 +186,11 @@
 .company-table__phone { font-family: Arial, Helvetica, sans-serif; font-size: 19px; letter-spacing: -.015em; }
 .company-section__information { min-width: 0; }
 .company-activities { border-bottom: 1px solid rgba($ink, .2);
-  summary { display: flex; align-items: center; justify-content: space-between; gap: 20px; min-height: 66px; padding: 20px 0; list-style: none; font-size: 12px; cursor: pointer; }
-  summary::-webkit-details-marker { display: none; }
+  h3 { margin: 0; padding: 20px 0; font-size: 12px; font-weight: 500; line-height: 2; }
   ol { display: grid; gap: 12px; margin: 0; padding: 0 0 26px 2em; font-size: 13px; line-height: 2; }
   li::marker { font-family: Arial, Helvetica, sans-serif; font-size: 11px; }
 }
-.company-activities__toggle { font-size: 19px; line-height: 1; transition: transform .25s ease; }
-.company-activities[open]:not([data-accordion-expanded='false']) .company-activities__toggle { transform: rotate(45deg); }
+
 .company-section__scope { margin-top: 22px; font-size: 12px; line-height: 2; }
 
 .contact-section { padding: 80px 0 78px; color: $paper; background: $ink; }
@@ -256,12 +256,12 @@
   .home-hero__topline > span { font-size: 7px; letter-spacing: .04em; }
   .home-hero__symbol { right: -.27em; top: 45%; font-size: clamp(670px, 150vw, 950px); -webkit-text-stroke-color: rgba($ink, .13); }
   .home-hero__axis { left: 78%; }
-  .home-hero__eyebrow { font-size: 9px; margin-bottom: clamp(12px, 2.8dvh, 24px); }
-  .home-hero__title { font-size: clamp(32px, min(11.8vw, 9dvh), 72px); line-height: 1.38; letter-spacing: -.07em; }
-  .home-hero__message { margin-top: clamp(14px, 3.2dvh, 28px); }
-  .home-hero__message > p { font-size: clamp(12px, 1.8dvh, 13px); line-height: 1.9; letter-spacing: .015em; }
-  .home-hero__message .text-link { margin-top: clamp(14px, 2.8dvh, 24px); font-size: 11px; }
-  .home-hero__bottom { gap: 15px; padding-top: clamp(10px, 2dvh, 16px); font-size: 7px; line-height: 1.7; }
+  .home-hero__eyebrow { font-size: 9px; margin-bottom: clamp(12px, 2.8svh, 24px); }
+  .home-hero__title { font-size: clamp(32px, min(11.8vw, 9svh), 72px); line-height: 1.38; letter-spacing: -.07em; }
+  .home-hero__message { margin-top: clamp(14px, 3.2svh, 28px); }
+  .home-hero__message > p { font-size: clamp(12px, 1.8svh, 13px); line-height: 1.9; letter-spacing: .015em; }
+  .home-hero__message .text-link { margin-top: clamp(14px, 2.8svh, 24px); font-size: 11px; }
+  .home-hero__bottom { gap: 15px; padding-top: clamp(10px, 2svh, 16px); font-size: 7px; line-height: 1.7; }
   .home-hero__bottom > p { max-width: 155px; }
   .home-hero__scroll { gap: 10px; font-size: 7px; letter-spacing: .025em; }
   .home-hero__scroll > span:last-child { font-size: 20px; }
@@ -317,7 +317,7 @@
   .company-table dt { font-size: 11px; }
   .company-table dd { font-size: 13px; line-height: 2; }
   .company-table__phone { font-size: 18px; }
-  .company-activities summary { font-size: 12px; }
+  .company-activities h3 { font-size: 12px; }
   .company-activities ol { font-size: 13px; }
   .company-section__scope { font-size: 12px; }
   .contact-section { padding: 57px 0 48px; }
@@ -360,7 +360,7 @@
 @media (max-height: 560px) and (min-aspect-ratio: 1/1) {
   .home-hero__main { display: grid; grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr); grid-template-rows: auto auto; align-content: center; align-items: center; gap: 0 28px; }
   .home-hero__eyebrow { grid-column: 1; grid-row: 1; align-self: end; margin-bottom: 8px; }
-  .home-hero__title { grid-column: 1; grid-row: 2; align-self: start; font-size: clamp(26px, min(4.7vw, 10dvh), 56px); line-height: 1.2; }
+  .home-hero__title { grid-column: 1; grid-row: 2; align-self: start; font-size: clamp(26px, min(4.7vw, 10svh), 56px); line-height: 1.2; }
   .home-hero__message { grid-column: 2; grid-row: 1 / span 2; margin: 0; }
   .home-hero__message > p { font-size: 12px; line-height: 1.7; }
   .home-hero__message .text-link { margin-top: 10px; font-size: 11px; gap: 18px; }

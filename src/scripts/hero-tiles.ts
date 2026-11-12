@@ -63,15 +63,16 @@ export function initHeroTiles(): () => void {
     // Keep the first paint and the existing ampersand independent of WebGL.
     void import('three').then((THREE) => {
       if (cancelled) return;
+      const touchDevice = window.matchMedia('(pointer: coarse)').matches;
       let renderer: WebGLRenderer;
       try {
-        renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true, powerPreference: 'low-power' });
+        renderer = new THREE.WebGLRenderer({ alpha: true, antialias: !touchDevice, powerPreference: 'low-power' });
       } catch {
         return; // The small CSS panels remain as the static fallback.
       }
 
       const compact = window.matchMedia('(max-width: 767px)').matches;
-      const count = compact ? 90 : 156;
+      const count = compact || touchDevice ? 90 : 156;
       const scene = new THREE.Scene();
       const camera = new THREE.PerspectiveCamera(35, 1, .1, 40);
       camera.position.z = 12;
@@ -219,12 +220,17 @@ export function initHeroTiles(): () => void {
         height = nextHeight;
         camera.aspect = width / height;
         camera.updateProjectionMatrix();
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, width < 768 ? 1.4 : 1.75));
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, touchDevice ? 1.25 : width < 768 ? 1.4 : 1.75));
         renderer.setSize(width, height, false);
         renderer.getDrawingBufferSize(uniforms.uResolution.value);
-        ScrollTrigger.refresh();
+        // Resizing a decorative canvas does not change document layout.
+        // Do not refresh scroll positions from a ResizeObserver callback.
       };
-      const resizeObserver = new ResizeObserver(resize);
+      let resizeFrame = 0;
+      const resizeObserver = new ResizeObserver(() => {
+        window.cancelAnimationFrame(resizeFrame);
+        resizeFrame = window.requestAnimationFrame(resize);
+      });
       resizeObserver.observe(host);
       const visibilityObserver = new IntersectionObserver(([entry]) => { visible = entry.isIntersecting; }, { rootMargin: '100px' });
       visibilityObserver.observe(story);
@@ -243,6 +249,7 @@ export function initHeroTiles(): () => void {
         timeline.scrollTrigger?.kill();
         timeline.kill();
         resizeObserver.disconnect();
+        window.cancelAnimationFrame(resizeFrame);
         visibilityObserver.disconnect();
         document.removeEventListener('menu:change', onMenuChange);
         renderer.domElement.removeEventListener('webglcontextlost', onContextLost);
@@ -256,6 +263,9 @@ export function initHeroTiles(): () => void {
       };
       resize();
       draw(0);
+      // The enhanced About layout is the only initial layout change here.
+      // A safe refresh waits until an active scroll gesture has finished.
+      ScrollTrigger.refresh(true);
       host.classList.add('is-webgl-ready');
       gsap.ticker.add(draw);
     }).catch(() => {
