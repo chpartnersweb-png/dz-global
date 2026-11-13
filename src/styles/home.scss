@@ -110,6 +110,7 @@
   h2 { margin: 0; font-size: clamp(34px, 3.4vw, 50px); font-weight: 400; line-height: 1.65; letter-spacing: -.045em; }
   > p { max-width: 360px; padding-bottom: 8px; font-size: 13px; line-height: 2.15; }
 }
+.business-section .section-heading { align-items: flex-start; }
 .business-list { border-top: 1px solid $ink; }
 .accordion-panel { display: flow-root; }
 .business-area { border-bottom: 1px solid rgba($ink, .28); }

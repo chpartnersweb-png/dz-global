@@ -13,15 +13,15 @@ import { Icon } from 'astro-icon/components';
       <div class="company-section__information" data-reveal>
       <dl class="company-table">
         <div><dt>会社名</dt><dd>{company.name}</dd></div>
+        <div><dt>代表取締役</dt><dd>{company.representative}</dd></div>
         <div><dt>所在地</dt><dd><address>〒{company.postalCode}<br />{company.address[0]}<br />{company.address[1]}</address><a class="small-link small-link--map" href={company.mapHref} target="_blank" rel="noopener noreferrer"><Icon name="lucide:map-pin" width={16} height={16} aria-hidden="true" focusable="false" /><span lang="en">Google Maps</span><span aria-hidden="true">↗</span><span class="visually-hidden">（新しいタブで開きます）</span></a></dd></div>
-        <div><dt>電話番号</dt><dd><a class="company-table__phone" href={company.phoneHref}>{company.phone}</a></dd></div>
-        <div><dt>企業支援</dt><dd>通訳・同時通訳、企業向け言語教育、文化理解、グローバル人材の採用支援・育成等<a class="small-link" href="#business"><span>支援内容の詳細</span><span aria-hidden="true">↑</span></a></dd></div>
+        <div><dt>企業支援</dt><dd>通訳・同時通訳、企業向け言語教育、異文化理解研修、グローバル人材の採用、育成コンサルティング等<a class="small-link" href="#business"><span>支援内容の詳細</span><span aria-hidden="true">↑</span></a></dd></div>
       </dl>
       <section class="company-activities" aria-labelledby="company-activities-title">
-        <h3 id="company-activities-title">事業内容一覧（全{activities.length}項目）</h3>
+        <h3 id="company-activities-title">事業内容一覧</h3>
         <ol>{activities.map((activity) => <li>{activity.text}</li>)}</ol>
       </section>
-      <p class="company-section__scope">経営・採用・社員教育・人材育成や店舗・施設の運営に関するコンサルティングをはじめ、飲食店の経営、芸能タレントのマネジメント・プロモート活動を行っています。</p>
+      <p class="company-section__scope">経営・採用・社員教育・人材育成に関するコンサルティングをはじめ、飲食店の経営・企画・プロデュース、芸能タレントのマネジメント・プロモート活動を行っています。</p>
       </div>
     </div>
   </div>
