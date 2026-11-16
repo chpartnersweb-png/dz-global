@@ -31,12 +31,6 @@ export const supportServices = [
       'ブランドの魅力を引き出す空間デザイン・プロモーションの企画支援',
     ],
   },
-  {
-    number: '04', english: 'Culture', title: '文化理解・ビジネスコミュニケーション',
-    introduction: '言葉の背景にある、考え方にも目を向ける。',
-    description: '相手の文化や価値観を知ることは、言葉の理解とともに大切な要素です。国や地域の違いを一律に捉えず、相手企業や働く人の背景を踏まえ、関係づくりに必要な理解を深めていきます。',
-    points: ['相手の文化・商習慣を踏まえたコミュニケーションの学習', '認識の違いや伝わり方を考える、異文化理解の支援'],
-  },
 ] as const;
 
 export const consultationExamples = [
